@@ -1,8 +1,8 @@
 ---
-id: version-1.0.1-doc1
+id: version-1.0.1-hadapsar-testnet-developer-experience
 title: Hadapsar Testnet - Developer Experience
 sidebar_label: Developer Experience
-original_id: doc1
+original_id: hadapsar-testnet-developer-experience
 ---
 
 # Developer Experience

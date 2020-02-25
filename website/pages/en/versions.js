@@ -38,7 +38,7 @@ function Versions(props) {
                   <a
                     href={`${siteConfig.baseUrl}${siteConfig.docsUrl}/${
                       props.language ? props.language + '/' : ''
-                    }mosaic-pm/experience/doc1`}>
+                    }mosaic-pm/experience/hadapsar-testnet-developer-experience`}>
                     Documentation
                   </a>
                 </td>
@@ -63,7 +63,7 @@ function Versions(props) {
                   <a
                     href={`${siteConfig.baseUrl}${siteConfig.docsUrl}/${
                       props.language ? props.language + '/' : ''
-                    }next/mosaic-pm/experience/doc1`}>
+                    }next/mosaic-pm/experience/hadapsar-testnet-developer-experience`}>
                     Documentation
                   </a>
                 </td>
@@ -89,7 +89,7 @@ function Versions(props) {
                         <a
                           href={`${siteConfig.baseUrl}${siteConfig.docsUrl}/${
                             props.language ? props.language + '/' : ''
-                          }${version}/mosaic-pm/experience/doc1`}>
+                          }${version}/mosaic-pm/experience/hadapsar-testnet-developer-experience`}>
                           Documentation
                         </a>
                       </td>
