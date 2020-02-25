@@ -1,0 +1,3 @@
+[submodule "docs/mosaic-pm"]
+	path = docs/mosaic-pm
+	url = https://github.com/mosaicdao/mosaic-pm.git
