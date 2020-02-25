@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>mosaic-pm/task-breakdowns/20191210-consensusgateway-tasks · MosaicDAO</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# ConsensusGateway + CoConsensus Tasks:"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="mosaic-pm/task-breakdowns/20191210-consensusgateway-tasks · MosaicDAO"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jayeshbairagi.github.io/mosaicdaoWeb/"/><meta property="og:description" content="# ConsensusGateway + CoConsensus Tasks:"/><meta property="og:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/mosaicdaoWeb/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/atom.xml" title="MosaicDAO Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/feed.xml" title="MosaicDAO Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/mosaicdaoWeb/js/scrollSpy.js"></script><link rel="stylesheet" href="/mosaicdaoWeb/css/main.css"/><script src="/mosaicdaoWeb/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/mosaicdaoWeb/"><img class="logo" src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO"/><h2 class="headerTitleWithLogo">MosaicDAO</h2></a><a href="/mosaicdaoWeb/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/mosaicdaoWeb/docs/next/mosaic-pm/experience/doc1" target="_self">Docs</a></li><li class=""><a href="/mosaicdaoWeb/help" target="_self">Help</a></li><li class=""><a href="/mosaicdaoWeb/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">mosaic-pm/task-breakdowns/20191210-consensusgateway-tasks</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="consensusgateway--coconsensus-tasks"></a><a href="#consensusgateway--coconsensus-tasks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConsensusGateway + CoConsensus Tasks:</h1>
+<ol>
+<li>Create a contract to calculate the KernelHash, as it will be used in multiple contracts (CoConsensus, Core).</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="messageinbox-and-messageoutbox"></a><a href="#messageinbox-and-messageoutbox" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MessageInbox and MessageOutbox:</h2>
+<ol>
+<li>Update chainId to metachainId.</li>
+<li>In message, rename <code>gasPrice</code> and <code>gasLimit</code> to <code>feeGasPrice</code> and <code>feeGasLimit</code> respectively</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="anchor"></a><a href="#anchor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Anchor:</h2>
+<p><del>1. A Function to return <code>maxItems</code>.
+- ConsensusGateway will use this value to number of storage roots in circular buffer.</del></p>
+<h2><a class="anchor" aria-hidden="true" id="define-most-interface"></a><a href="#define-most-interface" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Define MOST interface.</h2>
+<h2><a class="anchor" aria-hidden="true" id="define-utmost-interface"></a><a href="#define-utmost-interface" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Define utMOST interface.</h2>
+<h2><a class="anchor" aria-hidden="true" id="consensus"></a><a href="#consensus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Consensus:</h2>
+<ol>
+<li>Add internal getters for <code>uint256 _feeGasPrice</code> and <code>uint256 _feeGasLimit</code>. Return constant values for now, technical governance can update the values(Later, not in the scope for now.). This values will be used while calling <code>ConsensusGateway::declareOpenKernel</code>.</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="core"></a><a href="#core" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core:</h2>
+<ol>
+<li>Add <code>Core::getOpenKernel()</code> function.
+<ul>
+<li>This will return <code>openKernelHeight</code> and <code>openKernelHash</code>.</li>
+<li>This function will be called from <code>ConsensusGateway::declareOpenKernel</code>. <code>openKernelHeight</code> and <code>openKernelHash</code> is used in ConsensusGateway, and to avoid 2 separate calls on Core, we can get the values in one call.</li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="consensusgatewaybase"></a><a href="#consensusgatewaybase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConsensusGatewayBase:</h2>
+<ol>
+<li><p>This is a base contract for <code>ConsensusGateway</code> and <code>ConsensusCoGateway</code>.</p>
+<ul>
+<li>ConsensusGatewayBase is ConsensusModule</li>
+<li>It should have the following variables to store
+<ul>
+<li>ERC20Token MOST/utMOST
+<ul>
+<li><code>ERC20I public most;</code></li>
+</ul></li>
+<li>Mapping to store nonce of senders. This will track the nonce that is used in message declaration and confirmation.
+<ul>
+<li><code>mapping(address =&gt; uint256) nonces;</code></li>
+</ul></li>
+<li>Store current metablock height. This will track the latest height of the latest open metablock.
+<ul>
+<li><code>uint256 currentMetablockHeight;</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>A function to hash kernel intent.</p>
+<ul>
+<li>This hashing function will be used by both <code>ConsensusGateway</code> and <code>ConsensusCoGateway</code>.</li>
+</ul>
+<pre><code class="hljs">    bytes32 public constant KERNEL_INTENT_TYPEHASH = keccak256(
+        <span class="hljs-name">abi</span>.encode(
+            <span class="hljs-string">"KernelIntent(uint256 height,bytes32 kernelHash)"</span>
+        )
+    )
+</code></pre>
+<pre><code class="hljs">    <span class="hljs-attr">function</span> <span class="hljs-string">hashKernelIntent(</span>
+        <span class="hljs-attr">uint256</span> <span class="hljs-string">_height,</span>
+        <span class="hljs-attr">bytes32</span> <span class="hljs-string">_kernelHash</span>
+    <span class="hljs-meta">)</span> <span class="hljs-string"></span>
+        <span class="hljs-attr">public</span> <span class="hljs-string"></span>
+        <span class="hljs-attr">returns</span> <span class="hljs-string">(bytes32 kernelIntentHash_) </span>
+</code></pre></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="erc20gatewaybase"></a><a href="#erc20gatewaybase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ERC20GatewayBase</h2>
+<ol>
+<li><p>A function to hash deposit intent.</p>
+<ul>
+<li>This hashing function will be used by both <code>ConsensusGateway</code> and <code>ConsensusCoGateway</code>.</li>
+</ul>
+<pre><code class="hljs">    bytes32 constant public DEPOSIT_INTENT_TYPEHASH = keccak256(
+        <span class="hljs-name">abi</span>.encode(
+            <span class="hljs-string">"DepositIntent(uint256 amount,address beneficiary)"</span>             )  
+    )<span class="hljs-comment">;</span>
+</code></pre>
+<pre><code class="hljs">function hashDepositIntent(uint256 _amount,<span class="hljs-built_in"> address </span>_beneficiary)
+</code></pre></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="consensusgateway"></a><a href="#consensusgateway" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConsensusGateway:</h2>
+<ol>
+<li><p>ConsensusGatway contract (dependent on ConsensusGatewayBase.1)</p>
+<ul>
+<li><p>This should follow proxy pattern.</p>
+<ul>
+<li><code>contract ConsensusGateway is MasterCopyNonUpgradable, MessageBus, ConsensusGatewayBase, ERC20GatewayBase</code>
+/* TODO: Make MessageBus */</li>
+</ul></li>
+<li><p>Possible variables for this contracts.</p>
+<ul>
+<li>Define a constant for storage index of message box outbox mapping.
+<ul>
+<li><code>uint8 constant public OUTBOX_OFFSET = &lt;Identify this&gt;;</code></li>
+<li><code>uint8 constant public INBOX_OFFSET = &lt;Identify this&gt;;</code>
+eg.</li>
+</ul></li>
+</ul></li>
+<li><p><code>MasterCopyNonUpgradable</code> should be at location 0.</p></li>
+<li><p><code>MessageOutbox</code> should be always at location 1.</p></li>
+<li><p><strong>Setup function</strong>.</p>
+<pre><code class="hljs">function setup(
+    bytes32 _metachainId,
+   <span class="hljs-built_in"> address </span>_consensus,
+   <span class="hljs-built_in"> address </span>_consensusCogateway,
+    uint8 _outboxStorageIndex,
+    uint256 _maxStorageRootItems
+) 
+    external
+</code></pre>
+<ul>
+<li><p>This function can be called only once.</p></li>
+<li><p>Call setup function of <code>ConsensusGatewayBase</code></p>
+<pre><code class="hljs">  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ConsensusGatewayBase</span>.</span></span>setup<span class="hljs-constructor">ConsensusGatewayBase(<span class="hljs-params">_consensus</span>)</span>;
+</code></pre></li>
+<li><p>Call setup function of <code>MessageOutbox</code></p>
+<pre><code class="hljs">MessageOutbox.setupMessageOutbox(
+<span class="hljs-built_in">    _metachainId,</span>
+<span class="hljs-built_in">    _consensusCogateway,</span>
+    address(this)
+)<span class="hljs-comment">;</span>
+</code></pre></li>
+<li><p>Call setup function of <code>MessageInbox</code></p>
+<pre><code class="hljs">MessageInbox.setupMessageInbox(
+<span class="hljs-built_in">    _metachainId,</span>
+<span class="hljs-built_in">    _consensusCogateway,</span>
+<span class="hljs-built_in">    _outboxStorageIndex,</span>
+<span class="hljs-built_in">    _maxStorageRootItems,</span>
+    address(this)
+)<span class="hljs-comment">;</span>
+</code></pre></li>
+</ul></li>
+</ul></li>
+<li><p>A function to declare open kernel.</p>
+<pre><code class="hljs"><span class="hljs-keyword">function</span> declare<span class="hljs-constructor">OpenKernel(CoreI <span class="hljs-params">_core</span>, <span class="hljs-params">uint256</span> <span class="hljs-params">_feeGasPrice</span>, <span class="hljs-params">uint256</span> <span class="hljs-params">_feeGasLimit</span>)</span>
+    onlyConsensus
+    external
+    returns (bytes32 messageHash_)
+</code></pre>
+<ul>
+<li>Can only be called by <code>Consensus</code> contract.</li>
+<li>Pass core contract address as param.</li>
+<li>Assert that <code>_core</code> address is not zero.</li>
+<li>Get <code>openKernelHeight</code>, <code>openKernelHash</code> from Core.
+<ul>
+<li>Here we get all the required values from core contract in one call instead of 2.</li>
+</ul>
+<pre><code class="hljs"> (<span class="hljs-built_in">height</span>, kernelHash) = core.getOpenKernel()
+</code></pre></li>
+<li>The <code>height</code> can be equal to <code>currentMetablockHeight</code> or <code>currentMetablockHeight + 1</code>. We should allow equal height, in case of chain halting when new core is created, then the new kernel can be opened at the same height. As this function can be called only by consensus, we can trust that same height will not be passed in normal conditions. (Used for recovering from halted Core, then new Core can resume at same KernelHeight)</li>
+<li>Set <code>currentMetablockHeight = height;</code></li>
+<li>Create <code>kernelIntentHash</code>. It is EIP712(height, kernelHash)</li>
+<li>Increament <code>nonce</code> for the caller(from nonces mapping); FIRST NONCE = 0.</li>
+<li>Call <code>MessageOutbox.declareMessage</code> with the following params.
+<ul>
+<li>kernelIntentHash</li>
+<li>nonce</li>
+<li>_feeGasPrice</li>
+<li>_feeGasLimit</li>
+<li>msg.sender for sender</li>
+</ul></li>
+</ul></li>
+<li><p>A function to deposit MOST on the origin chain and mint utMOST on the auxiliary chain.</p>
+<pre><code class="hljs">function deposit(
+    uint256 _amount,
+   <span class="hljs-built_in"> address </span>_beneficiary,
+    uint256 _feeGasPrice,
+    uint256 _feeGasLimit,
+)
+</code></pre>
+<ul>
+<li>Anyone can all this function to deposit MOST.</li>
+<li>Validate input params.</li>
+<li>Check if reward is possible with given input params amount, _feeGasPrice and _feeGasLimit. If the reward is not possible then revert.</li>
+<li>Generate <code>depositIntentHash</code>. Call <code>ERC20GatewayBase::hashDepositIntent</code> to get the <code>depositIntentHash</code>.</li>
+<li>Increament <code>nonce</code> for the caller(from nonces mapping). Nonce must start from 0</li>
+<li>Call <code>MessageOutbox.declareMessage</code> with the following params.
+<ul>
+<li>depositIntentHash</li>
+<li>nonce</li>
+<li>_feeGasPrice</li>
+<li>_feeGasLimit</li>
+<li>address(msg.sender) i.e depositor</li>
+</ul></li>
+<li>Transfer <code>_amount</code> number of the MOST from <code>address(msg.sender)</code> to ConsensusGateway <code>address(this)</code>.</li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="genesisconsensuscogateway"></a><a href="#genesisconsensuscogateway" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GenesisConsensusCogateway</h2>
+<p>TODO: <a href="https://github.com/mosaicdao/mosaic-pm/blob/master/specification-discussions/20191209-genesis-contracts.md">https://github.com/mosaicdao/mosaic-pm/blob/master/specification-discussions/20191209-genesis-contracts.md</a></p>
+<h2><a class="anchor" aria-hidden="true" id="consensuscogateway"></a><a href="#consensuscogateway" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConsensusCogateway</h2>
+<ol>
+<li><p>ConsensusCogatway contract</p>
+<ul>
+<li>This should follow proxy pattern.
+<ul>
+<li><code>contract ConsensusCogateway is MasterCopyNonUpgradable, GenesisConsensusCogateway, MessageBus, ConsensusGatewayBase, ERC20GatewayBase</code></li>
+</ul></li>
+<li>Possible variables for this contracts.
+<ul>
+<li>Define a constant for storage index of message box outbox mapping.
+<ul>
+<li><code>uint8 constant public INBOX_OFFSET = &lt;Identify the index&gt;;</code></li>
+<li><code>uint8 constant public INBOX_OFFSET = &lt;Identify the index&gt;;</code></li>
+<li><code>ProtoCoreI public protocore;</code></li>
+<li><code>mapping(uint256 /*metablock height*/ =&gt; bytes32 /*kernel hash*/) kernelHashes;</code></li>
+</ul></li>
+<li><code>MasterCopyNonUpgradable</code> should be at inclusionIndex 0.</li>
+<li><code>GenesisConsensusCogateway</code> should be at inclusionIndex 1.</li>
+<li><code>MessageBus</code> should be always at inclusionIndex 2.</li>
+</ul></li>
+</ul>
+<p>TODO: Make it consistent with ConsensusGateway::setup.</p>
+<ul>
+<li><p><strong>Setup function.</strong></p>
+<pre><code class="hljs">function setup(
+    bytes32 _metachainId,
+   <span class="hljs-built_in"> address </span>_coConsensus,
+   <span class="hljs-built_in"> address </span>_consensusGateway,
+    uint8 _outboxStorageIndex,
+    uint256 _maxStorageRootItems
+)
+    external
+</code></pre>
+<ul>
+<li>This function can be called only once.</li>
+<li>Call setup function of <code>ConsensusGatewayBase</code>.
+<pre><code class="hljs">ConsensusGatewayBase.setupConsensusGatewayBase(
+    _coConsensus
+)<span class="hljs-comment">;</span>
+</code></pre></li>
+<li>Get <code>anchor</code> address from <code>CoConsensus</code> contract.</li>
+<li>Call setup function of <code>MessageOutbox</code></li>
+</ul>
+<pre><code class="hljs">MessageInbox.setupMessageInbox(
+    _metachainId,
+    _consensusGateway,
+    _outboxStorageIndex,
+    <span class="hljs-built_in">anchor</span>,
+    _maxStorageRootItems
+);
+</code></pre></li>
+</ul></li>
+<li><p>Function to prove Consensus contract. (May be this can be merged with some other tickets.)</p>
+<pre><code class="hljs">function proveConsensusGateway(
+    uint256 <span class="hljs-variable">_blockHeight</span>,
+    bytes calldata <span class="hljs-variable">_rlpAccount</span>,
+    bytes calldata <span class="hljs-variable">_rlpParentNodes</span>
+)
+    external
+{
+    MessageInbox.proveStorageAccount(
+        <span class="hljs-variable">_blockHeight</span>,
+        <span class="hljs-variable">_rlpAccount</span>,
+        <span class="hljs-variable">_rlpParentNodes</span>
+    );
+}
+</code></pre></li>
+<li><p>Confirm open kernel declared on auxiliary chain.</p>
+<pre><code class="hljs"> function confirmOpenKernel(
+    uint256 _kernelHeight,
+    bytes32 _kernelHash,
+    uint256 _feeGasPrice,
+    uint256 _feeGasLimit,
+   <span class="hljs-built_in"> address </span>_sender,
+    uint256 _blockHeight,
+    bytes calldata _rlpParentNodes
+)
+    external
+    returns (bytes32 messageHash_)
+
+</code></pre>
+<ul>
+<li>Check if the <code>_kernelHeight</code> - <code>currentMetablockHeight</code> = 1</li>
+<li>Update <code>currentMetablockHeight</code>. <code>currentMetablockHeight = _kernelHeight;</code></li>
+<li>Create <code>kernelIntentHash</code> with params <code>(_kernelHeight, _kernelHash);</code></li>
+<li>Increase the nonce count for the <code>sender</code> address. Nonce should start from zero.</li>
+<li>Call confirm message on MessageInbox.
+<code>messageHash_ = MessageInbox.confirmMessage( kernelIntentHash, nonce, _feeGasPrice, _feeGasLimit, _sender, _blockHeight, _rlpParentNodes );</code></li>
+<li>Update the mapping <code>kernelHashes</code>.</li>
+</ul></li>
+<li><p>Confirm deposit on auxiliary chain.</p>
+<pre><code class="hljs">function confirmDeposit(
+    uint256 _amount,
+   <span class="hljs-built_in"> address </span>payable _beneficiary,
+    uint256 _gasPrice,
+    uint256 _gasLimit,
+   <span class="hljs-built_in"> address </span>_depositor,
+    uint256 _blockHeight,
+    bytes calldata _rlpParentNodes
+)
+    external
+    returns (bytes32 messageHash_)
+</code></pre>
+<ul>
+<li>Get the initial gas amount. <code>initialGas = gasleft();</code>. Intention here is to record the gas used in this function call. This gas used will be used for reward calculations.</li>
+<li>Add validations for input params.</li>
+<li><del>Check if reward is possible with given amount, gasprice and gaslimit. If reward is not possible then revert.</del></li>
+<li>Increament the nonce for the sender address. Nonce starts from zero.</li>
+<li>Generate <code>depositIntentHash</code>. Call <code>ERC20GatewayBase::hashDepositIntent</code> to get the <code>depositIntentHash</code>.</li>
+<li>Call confirm message in MessageInbox.
+<ul>
+<li><pre><code class="hljs">  messageHash_ = MessageInbox.confirmMessage(
+<span class="hljs-built_in">      depositIntentHash,</span>
+<span class="hljs-built_in">      nonce,</span>
+<span class="hljs-built_in">      _gasPrice,</span>
+<span class="hljs-built_in">      _gasLimit,</span>
+<span class="hljs-built_in">      _depositor,</span>
+<span class="hljs-built_in">      _blockHeight,</span>
+      _rlpParentNodes
+  )<span class="hljs-comment">;</span>
+</code></pre></li>
+</ul></li>
+<li>Calculate the gas consumed. <code>initialGas.sub(gasleft());</code></li>
+<li>Calculate the reward.</li>
+<li>Mint reward to the msg.sender account.</li>
+<li>Mint token to the beneficiary account.</li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="consensusnewgateway"></a><a href="#consensusnewgateway" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Consensus:newGateway</code></h2>
+<p>Any DApp developer can deploy a custom Gateway for their DApp (or reuse the existing logic for an ERC20 gateway, an NFT gateway, ...)</p>
+<h2><a class="anchor" aria-hidden="true" id="coconsensus"></a><a href="#coconsensus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CoConsensus.</h2>
+<ol>
+<li>Function to commit meta block.
+<pre><code class="hljs">function commitMetablock(
+    bytes32 <span class="hljs-variable">_parentVoteMessageHash</span>,
+    uint256 <span class="hljs-variable">_openedKernelHeight</span>,
+    address[] <span class="hljs-variable">_updatedValidators</span>,
+    uint256[] <span class="hljs-variable">_updatedReputation</span>,
+    uint256 <span class="hljs-variable">_gasTarget</span>
+) external 
+</code></pre>
+<ul>
+<li>Create the <code>kernelHash</code> from the given inputs.</li>
+<li>Check the generated kernel hash is equal to the <code>consensusCogateway::getKernelHash(_openedKernelHeight);</code>.</li>
+<li>Call <code>protocore::commitSourceCheckpoint(_parentVoteMessageHash)</code></li>
+<li>Loop through <code>_updatedValidators</code> array.
+<ul>
+<li><pre><code class="hljs">  <span class="hljs-keyword">if</span>(reputation == <span class="hljs-number">0</span>) {
+      protocore.logout(<span class="hljs-keyword">validator</span>)
+  }
+  <span class="hljs-keyword">else</span>(
+      <span class="hljs-built_in">new</span> = reputation::upsert(<span class="hljs-keyword">validator</span>, reputation))
+      <span class="hljs-keyword">if</span> <span class="hljs-built_in">new</span> {
+          protocore.<span class="hljs-keyword">join</span>(<span class="hljs-keyword">validator</span>)
+      }
+  }
+  
+  
+  
+</code></pre></li>
+</ul></li>
+</ul></li>
+</ol>
+<p>TODO: make a task.</p>
+<ul>
+<li>If the reputation decreases to zero, then logout from core and reputation.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="most"></a><a href="#most" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MOST:</h2>
+<h2><a class="anchor" aria-hidden="true" id="utmost"></a><a href="#utmost" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UTMOST:</h2>
+<h2><a class="anchor" aria-hidden="true" id="protocore"></a><a href="#protocore" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Protocore:</h2>
+<ol>
+<li><h2><a class="anchor" aria-hidden="true" id="variables"></a><a href="#variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variables:</h2>
+</li>
+<li>(parentKernelHeight, parentKernelHash) = protoCore.openKernel();</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="coanchor"></a><a href="#coanchor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CoAnchor:</h2>
+<h1><a class="anchor" aria-hidden="true" id="later"></a><a href="#later" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Later</h1>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#messageinbox-and-messageoutbox">MessageInbox and MessageOutbox:</a></li><li><a href="#anchor">Anchor:</a></li><li><a href="#define-most-interface">Define MOST interface.</a></li><li><a href="#define-utmost-interface">Define utMOST interface.</a></li><li><a href="#consensus">Consensus:</a></li><li><a href="#core">Core:</a></li><li><a href="#consensusgatewaybase">ConsensusGatewayBase:</a></li><li><a href="#erc20gatewaybase">ERC20GatewayBase</a></li><li><a href="#consensusgateway">ConsensusGateway:</a></li><li><a href="#genesisconsensuscogateway">GenesisConsensusCogateway</a></li><li><a href="#consensuscogateway">ConsensusCogateway</a></li><li><a href="#consensusnewgateway"><code>Consensus:newGateway</code></a></li><li><a href="#coconsensus">CoConsensus.</a></li><li><a href="#most">MOST:</a></li><li><a href="#utmost">UTMOST:</a></li><li><a href="#protocore">Protocore:</a></li><li><a href="#variables">Variables:</a></li><li><a href="#coanchor">CoAnchor:</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/mosaicdaoWeb/" class="nav-home"><img src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO" width="66" height="58"/></a><div><h5>Docs</h5><a href="/mosaicdaoWeb/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc2.html">Guides (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/mosaicdaoWeb/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/mosaicdaoWeb/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/mosaicdaoWeb/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Your Name or Your Company Name</section></footer></div></body></html>

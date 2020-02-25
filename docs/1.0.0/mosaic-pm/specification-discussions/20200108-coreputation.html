@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>&#x27;CoReputation&#x27; · MosaicDAO</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="CoReputation"/><meta name="docsearch:version" content="1.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="&#x27;CoReputation&#x27; · MosaicDAO"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jayeshbairagi.github.io/mosaicdaoWeb/"/><meta property="og:description" content="CoReputation"/><meta property="og:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/mosaicdaoWeb/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/atom.xml" title="MosaicDAO Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/feed.xml" title="MosaicDAO Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/mosaicdaoWeb/js/scrollSpy.js"></script><link rel="stylesheet" href="/mosaicdaoWeb/css/main.css"/><script src="/mosaicdaoWeb/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/mosaicdaoWeb/"><img class="logo" src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO"/><h2 class="headerTitleWithLogo">MosaicDAO</h2></a><a href="/mosaicdaoWeb/versions"><h3>1.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/mosaicdaoWeb/docs/1.0.0/mosaic-pm/experience/doc1" target="_self">Docs</a></li><li class=""><a href="/mosaicdaoWeb/help" target="_self">Help</a></li><li class=""><a href="/mosaicdaoWeb/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">&#x27;CoReputation&#x27;</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="coreputation"></a><a href="#coreputation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CoReputation</h1>
+<table>
+<thead>
+<tr><th>version</th><th>Last updated</th><th>Component</th></tr>
+</thead>
+<tbody>
+<tr><td>0.14</td><td>08/01/2020</td><td>CoReputation</td></tr>
+</tbody>
+</table>
+<p><strong>Meeting date/time:</strong> N/A</p>
+<p><strong>Editor:</strong> Deepesh Kumar Nath</p>
+<p><strong>Team:</strong> N/A</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<p><code>CoReputation</code> contract on the auxiliary chain does the bookkeeping of validators. This contract on the auxiliary chain mirrors a subset of the total validator set (minimally the core validators) of the <code>Reputation</code> contract on origin. With each metablock opening cycle, an array of updated validators and their reputation synchronises the origin reputation to the coreputation contract. This contract tracks the following for validators</p>
+<ul>
+<li>Validator status
+<ul>
+<li>Undefined</li>
+<li>Slashed</li>
+<li>Staked</li>
+<li>Deregistered</li>
+</ul></li>
+<li>Reputation</li>
+</ul>
+<p>The reputation and the status of the validators will be updated when the opening of the kernel is confirmed on the auxiliary chain and the proposed metablock is committed on the auxiliary chain.</p>
+<p>New validators with a non-zero reputation in the kernel become <code>Staked</code> (<code>Undefined -&gt; Staked</code>).
+Staked validators with a zero reputation in the kernel are logged out, which in coreputation is marked as <code>Deregistered</code> (<code>Staked -&gt; Deregistered</code>).
+Staked validators that violate slashing conditions will be instantly marked as <code>Slashed</code> (<code>Any -&gt; Slashed</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="user-stories-for-gen1-bft"></a><a href="#user-stories-for-gen1-bft" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User stories for Gen1-BFT</h2>
+<ul>
+<li>As a CoConsensus contract, it should be able to register validators in CoReputation contract.</li>
+<li>As a CoConsensus contract, it should abe able to update reputation value and validator status in CoReputation contract.
+<ul>
+<li>Non existing validator default status is <code>Undefined</code>.</li>
+<li>Validator status should change to <code>Staked</code> when validator status is <code>Undefined</code> and he has non zero reputation value.</li>
+<li>Validator status should changed to <code>Deregistered</code> when his current status is <code>Staked</code> and reputation value changes to zero value.</li>
+</ul></li>
+<li>As a user, I should be able to read the status of validators.</li>
+<li>As a user, I should be able to read the reputation of validators.</li>
+<li><del>As a user, I should be able to check if validator is active or Deregistered.</del></li>
+<li>As a user, I should be able to check if validator is slashed or not.</li>
+<li>As a CoConsensus contract, it should be able to slash a validator.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="coreputation-state-machine"></a><a href="#coreputation-state-machine" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CoReputation state machine</h2>
+<p>The state change of the validators state can happen as follows</p>
+<pre><code class="hljs css language-mermaid">graph TD;
+    U<span class="hljs-function"><span class="hljs-title">ndefined</span>--&gt;</span>Staked;
+    S<span class="hljs-function"><span class="hljs-title">taked</span>--&gt;</span>Deregistered;
+    S<span class="hljs-function"><span class="hljs-title">taked</span>--&gt;</span>Slashed;
+    D<span class="hljs-function"><span class="hljs-title">eregistered</span>--&gt;</span>Slashed;
+    U<span class="hljs-function"><span class="hljs-title">ndefined</span>--&gt;</span>Slashed;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tasks"></a><a href="#tasks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tasks</h2>
+<p>(This section is temporary here, will be removed)</p>
+<ol>
+<li>CoReputationGenesis contract
+<ul>
+<li>CoReputationGenesis is the contract that holds all the variables used in origin anchor contract.</li>
+<li>This contract should not hold any logical function, this is pure storage contract containing only variables.</li>
+<li>We should define <code>ValidatorStatus</code> enum. Validator values are <code>Undefined</code>, <code>Slashed</code>, <code>Staked</code>, <code>Deregistered</code>.</li>
+<li>We should define <code>ValidatorInfo</code> struct. Proposed state variables in struct are below:
+<ul>
+<li>Validator status</li>
+<li>reputation value</li>
+</ul></li>
+<li>We should define mapping of validator address versus ValidatorInfo.
+<ul>
+<li><code>mapping(address =&gt; ValidatorInfo) public validators</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<p><b>TO DISCUSS</b>: Since the address of the CoConsensus is provided in the genesis file, do we need coconsensus module?</p>
+<ol start="2">
+<li><p>Setup CoReputation contract(Will be updated based on discussion)</p>
+<ul>
+<li>The CoReputation contract should inherit <code>CoReputationGenesis</code> contract.</li>
+<li>The setup method is for testing purpose only. In actual case the variables of the contract will be initialized in the genesis block.</li>
+<li>The CoReputation contract should follow the proxy pattern for deployment.</li>
+<li><code>CoReputation</code> is <code>MasterCopyNonUpgradable</code>, <code>CoConsensusModule</code></li>
+<li>Setup function should be called only once.</li>
+<li>Proposed interface:
+<pre><code class="hljs css language-solidity">    function setup(
+       <span class="hljs-built_in"> address </span>_coConsensus,
+    ) 
+        external
+</code></pre></li>
+</ul></li>
+<li><p>CoConsensus should be able to update validators information</p>
+<ul>
+<li>CoConsensus contract should be able to add validator in CoReputation contract. Only CoConsensus should update validator information</li>
+<li>Validator reputation value should be updated.</li>
+<li>Validator status should be marked to <code>Staked</code>, if validator status is <code>Undefined</code> and he has non zero reputation value.</li>
+<li>Validator status should be marked to <code>Deregistered</code> when his current status is <code>Staked</code> and reputation value changes to zero value.</li>
+<li>Proposal:
+<pre><code class="hljs css language-solidity">    function upsertValidator(
+       <span class="hljs-built_in"> address </span>_validator,
+        uint256 _reputation
+    )
+        external
+        onlyCoConsensus
+</code></pre></li>
+</ul></li>
+<li><p>CoConsensus should be able to slash a validator that violate slashing conditions.</p>
+<ul>
+<li>Only CoConsensus can call this method</li>
+<li>Validator status should be <code>Staked</code></li>
+<li>Validator status should not be <code>Slashed</code></li>
+<li>Validator status should be changed to <code>Slashed</code></li>
+<li>Validator reputation should change to zero</li>
+<li>Proposal:
+<pre><code class="hljs css language-solidity">    <span class="hljs-variable">function</span> <span class="hljs-function"><span class="hljs-title">slash</span>(<span class="hljs-variable">address</span> <span class="hljs-variable">_validator</span>)</span>
+        <span class="hljs-variable">external</span>
+        <span class="hljs-variable">onlyCoConsensus</span>    
+        <span class="hljs-function"><span class="hljs-title">hasStaked</span>(<span class="hljs-variable">_validator</span>)</span>
+        <span class="hljs-function"><span class="hljs-title">hasNotSlashed</span>(<span class="hljs-variable">_validator</span>)</span>
+</code></pre></li>
+</ul></li>
+<li><p>Anyone should be able to read reputation value of a Validtaor</p>
+<ul>
+<li>Proposal:
+<pre><code class="hljs css language-solidity">    function getReputation(<span class="hljs-name">address</span> _validator)
+        external
+        view
+        returns (<span class="hljs-name">uint256</span>)
+</code></pre></li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="assumptions"></a><a href="#assumptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Assumptions</h2>
+<h2><a class="anchor" aria-hidden="true" id="out-of-scope"></a><a href="#out-of-scope" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Out of scope</h2>
+<h2><a class="anchor" aria-hidden="true" id="open-questions"></a><a href="#open-questions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Open questions</h2>
+<h2><a class="anchor" aria-hidden="true" id="approach"></a><a href="#approach" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Approach</h2>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="meeting-notes"></a><a href="#meeting-notes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting notes</h2>
+<h3><a class="anchor" aria-hidden="true" id="meeting-1"></a><a href="#meeting-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting 1</h3>
+<p>date/time:
+attendees:</p>
+<h3><a class="anchor" aria-hidden="true" id="meeting-2"></a><a href="#meeting-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting 2</h3>
+<p>date: 10/1/2020</p>
+<ul>
+<li><p><code>upsertValidator(uint256 reputation)</code></p></li>
+<li><p>suggestion: CoReputation::upsertValidator() returns an enumeration value indicating if the validator should be joined, logged out, or do-nothing (for example if it was slashed in CoReputation already).</p></li>
+<li><p>Once slashed validator's reputation should be set to 0 both in Reputation.sol and CoReputation.sol</p></li>
+<li><p>suggestion: ProtoCore::isValidator() should return true with the same logic as in Core::isValidator</p></li>
+<li><p>note: dont write validators into <code>coreputationGenesis</code>, because we can confirm the initial kernel through the <code>ConsensusCogateway</code> and then use coconsensus to initialise the validators in coreputation and SelfProtocore. OriginAnchorGenesis has the state root at which the last validator joined on origin and the kernelOpening has been declared.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a></li><li><a href="#user-stories-for-gen1-bft">User stories for Gen1-BFT</a></li><li><a href="#coreputation-state-machine">CoReputation state machine</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#assumptions">Assumptions</a></li><li><a href="#out-of-scope">Out of scope</a></li><li><a href="#open-questions">Open questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#meeting-notes">Meeting notes</a><ul class="toc-headings"><li><a href="#meeting-1">Meeting 1</a></li><li><a href="#meeting-2">Meeting 2</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/mosaicdaoWeb/" class="nav-home"><img src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO" width="66" height="58"/></a><div><h5>Docs</h5><a href="/mosaicdaoWeb/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc2.html">Guides (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/mosaicdaoWeb/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/mosaicdaoWeb/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/mosaicdaoWeb/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Your Name or Your Company Name</section></footer></div></body></html>

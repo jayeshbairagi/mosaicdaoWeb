@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>utMOST · MosaicDAO</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# utMOST"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="utMOST · MosaicDAO"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jayeshbairagi.github.io/mosaicdaoWeb/"/><meta property="og:description" content="# utMOST"/><meta property="og:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/mosaicdaoWeb/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/atom.xml" title="MosaicDAO Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/feed.xml" title="MosaicDAO Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/mosaicdaoWeb/js/scrollSpy.js"></script><link rel="stylesheet" href="/mosaicdaoWeb/css/main.css"/><script src="/mosaicdaoWeb/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/mosaicdaoWeb/"><img class="logo" src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO"/><h2 class="headerTitleWithLogo">MosaicDAO</h2></a><a href="/mosaicdaoWeb/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/mosaicdaoWeb/docs/next/mosaic-pm/experience/doc1" target="_self">Docs</a></li><li class=""><a href="/mosaicdaoWeb/help" target="_self">Help</a></li><li class=""><a href="/mosaicdaoWeb/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">utMOST</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="utmost"></a><a href="#utmost" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>utMOST</h1>
+<table>
+<thead>
+<tr><th>Version</th><th>Last Updated</th><th>Component</th></tr>
+</thead>
+<tbody>
+<tr><td>0.14</td><td>08/01/2020</td><td>utMOST</td></tr>
+</tbody>
+</table>
+<p><strong>Meeting date/time:</strong> N/A</p>
+<p><strong>Editor:</strong> Jayesh Bairagi</p>
+<p><strong>Team:</strong> N/A</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<p><code>utMOST</code> contract will be an ERC20 implementation for the auxiliary chain. We will be inheriting ERC20 functionalities from the ERC20 standards like <code>TOKEN_SYMBOL</code>, <code>TOKEN_NAME</code>, <code>TOKEN_DECIMALS</code>, <code>TOKENS_MAX</code>, <code>mint</code>, <code>burn</code>, <code>transfer</code>, <code>transferFrom</code>, <code>approve</code>.</p>
+<p><code>utMOST</code> contract will provide <code>ConsensusCogateway</code> the permission for increasing and decreasing the supply of the <code>utMOST</code> tokens in the network. It will function as the base token to pay for gas consumption on the auxiliary chain.</p>
+<p><code>utMOST</code> contract will handle the wrapping i.e, conversion of base token to the ERC20 most token and unwrapping i.e, conversion of ERC20 most token to the base token.</p>
+<h2><a class="anchor" aria-hidden="true" id="user-stories"></a><a href="#user-stories" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User stories</h2>
+<ul>
+<li>As a ConsensusCogateway contract, I should be able to mint utMOST as ERC20 and unwrap to base token for any address.</li>
+<li>As a User of ERC20 tokens, I should be able to burn only my ERC20 tokens.</li>
+<li>As a User of ERC20 tokens, I should be able to transfer tokens to other users.</li>
+<li>As a User of ERC20 tokens, I should be able to approve an allowance for a spender.</li>
+<li>As a spender user for ERC20 tokens, I should be able to transfer the ERC20 token to other user.</li>
+<li>As a spender user for ERC20 tokens, I should be able to burnFrom the ERC20 token.</li>
+<li>As a User of ERC20 tokens, I should be able to wrap base token to utMOST erc20 tokens.</li>
+<li>As a User of ERC20 tokens, I should be able to unwrap utMOST erc20 token to base tokens.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="tasks"></a><a href="#tasks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tasks</h2>
+<ul>
+<li><p>Inherits standard ERC20 token.</p></li>
+<li><p>Constructor for <strong>utMOST</strong> contract :</p>
+<ul>
+<li>It would accept parameters to set <code>TOKEN_SYMBOL</code>, <code>TOKEN_NAME</code>, <code>TOKEN_DECIMALS</code>, <code>TOTAL_SUPPLY</code> for an ERC20Token.</li>
+</ul></li>
+<li><p>Storage named <strong>coGateway</strong> to store coGateway address. It will be hard-coded address. ConsensusCogateway proxy is at 0x00..004d02 (see <a href="https://hackmd.io/CvX0fkpOQjiPdQi2jC5_tA">https://hackmd.io/CvX0fkpOQjiPdQi2jC5_tA</a>).</p></li>
+<li><p><code>wrap</code> method to convert base coin to <code>utMost</code>.</p>
+<ul>
+<li>Proposal
+<pre><code class="hljs css language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span></span> wrap(
+    
+)
+    <span class="hljs-keyword">external</span>
+    payable
+</code></pre></li>
+</ul></li>
+<li><p><code>unwrap</code> method to convert <code>utMost</code> to base coin.</p>
+<ul>
+<li>Proposal
+<pre><code class="hljs css language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span></span> unwrap(
+    uint256 unWrapAmount
+)
+    <span class="hljs-keyword">external</span>
+</code></pre></li>
+</ul></li>
+<li><p><code>increaseSupply</code> method increases the total token supply. It can only be called by coGateway contract.</p></li>
+<li><p><code>decreaseSupply</code> method decreases the total token supply. It can only be called by coGateway contract.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="assumptions"></a><a href="#assumptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Assumptions</h2>
+<h2><a class="anchor" aria-hidden="true" id="out-of-scope"></a><a href="#out-of-scope" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Out of scope</h2>
+<h2><a class="anchor" aria-hidden="true" id="open-questions"></a><a href="#open-questions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Open questions</h2>
+<ul>
+<li><p>What will be the total token cap ? MOSAIC_CORE_MAX_BASECOIN_DEPOSIT</p></li>
+<li><p>Who will be setting the cogateway address ? Either of below option :</p>
+<ul>
+<li>Validators. If this option is chosen then how do we trust the validator. Bad validators can set corrupt coGateway address.</li>
+<li>utMost token address will be in genesis file.</li>
+</ul>
+<p>Answer: Hard-code constant in the utMOST contract. ConsensusCogateway proxy is at <code>0x00..004d02</code> (see <a href="https://hackmd.io/CvX0fkpOQjiPdQi2jC5_tA">https://hackmd.io/CvX0fkpOQjiPdQi2jC5_tA</a>)</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="approach"></a><a href="#approach" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Approach</h2>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="meeting-notes"></a><a href="#meeting-notes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting notes</h2>
+<h3><a class="anchor" aria-hidden="true" id="meeting-1"></a><a href="#meeting-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting 1</h3>
+<p>date/time:
+attendees:</p>
+<p>Ben: Balances of the validators shouldn’t be confirmable</p>
+<h3><a class="anchor" aria-hidden="true" id="meeting-2"></a><a href="#meeting-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting 2</h3>
+<p>date / time: 10/01/2020</p>
+<p>To burn tokens, UTMots::burn() function is used. In later implementation, bulk burning functionality will be enabled (tokens will be burned on origin as a bulk operation initiated  by some party).</p>
+<h2><a class="anchor" aria-hidden="true" id="goals"></a><a href="#goals" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Goals</h2>
+<p>The goal of the <code>utMOST</code> contract are:</p>
+<ul>
+<li><p>To have a base token on the auxiliary chain that will used to pay for gas consumption.</p></li>
+<li><p>To have an ERC20 based token which will have features</p>
+<ul>
+<li>Token symbol(<code>TOKEN_SYMBOL</code>): <code>utMOST</code></li>
+<li>Token name(<code>TOKEN_NAME</code>): <code>Utility Token Most</code></li>
+<li>Token decimals(<code>TOKEN_DECIMALS</code>): <code>18</code></li>
+<li>Token cap(<code>TOKENS_MAX</code>): <code>&lt;TBD&gt;</code></li>
+<li>mint</li>
+<li>burn</li>
+<li>transfer</li>
+<li>transferFrom</li>
+<li>approve</li>
+</ul></li>
+<li><p>Only the <code>ConsensusCogateway</code> address will have the permission to increase and decrease the base token supply in the network.</p></li>
+<li><p>To be able to handle the conversion of ERC20 most token to the base token and the conversion of base token to the ERC20 most token.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a></li><li><a href="#user-stories">User stories</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#assumptions">Assumptions</a></li><li><a href="#out-of-scope">Out of scope</a></li><li><a href="#open-questions">Open questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#meeting-notes">Meeting notes</a><ul class="toc-headings"><li><a href="#meeting-1">Meeting 1</a></li><li><a href="#meeting-2">Meeting 2</a></li></ul></li><li><a href="#goals">Goals</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/mosaicdaoWeb/" class="nav-home"><img src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO" width="66" height="58"/></a><div><h5>Docs</h5><a href="/mosaicdaoWeb/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc2.html">Guides (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/mosaicdaoWeb/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/mosaicdaoWeb/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/mosaicdaoWeb/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Your Name or Your Company Name</section></footer></div></body></html>
