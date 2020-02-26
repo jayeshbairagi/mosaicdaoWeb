@@ -1,0 +1,357 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>&#x27;Protocore&#x27; · MosaicDAO</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Mosaic Implementation Discussion: Protocore"/><meta name="docsearch:version" content="1.0.1"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="&#x27;Protocore&#x27; · MosaicDAO"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jayeshbairagi.github.io/mosaicdaoWeb/"/><meta property="og:description" content="# Mosaic Implementation Discussion: Protocore"/><meta property="og:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/mosaicdaoWeb/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/atom.xml" title="MosaicDAO Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/feed.xml" title="MosaicDAO Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/mosaicdaoWeb/js/scrollSpy.js"></script><link rel="stylesheet" href="/mosaicdaoWeb/css/main.css"/><script src="/mosaicdaoWeb/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/mosaicdaoWeb/"><img class="logo" src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO"/><h2 class="headerTitleWithLogo">MosaicDAO</h2></a><a href="/mosaicdaoWeb/versions"><h3>1.0.1</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/mosaicdaoWeb/docs/1.0.1/mosaic-pm/experience/hadapsar-testnet-developer-experience" target="_self">Docs</a></li><li class=""><a href="/mosaicdaoWeb/help" target="_self">Help</a></li><li class=""><a href="/mosaicdaoWeb/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">&#x27;Protocore&#x27;</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="mosaic-implementation-discussion-protocore"></a><a href="#mosaic-implementation-discussion-protocore" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mosaic Implementation Discussion: Protocore</h1>
+<table>
+<thead>
+<tr><th>version</th><th>Last updated</th><th>Component</th></tr>
+</thead>
+<tbody>
+<tr><td>0.14</td><td>14/01/2020</td><td>Protocore contract</td></tr>
+</tbody>
+</table>
+<p>Meeting date/time: Friday 6 december 2019</p>
+<p>Editor: Benjamin Bollen, Paruyr Gevorgyan</p>
+<h2><a class="anchor" aria-hidden="true" id="contract-architecture"></a><a href="#contract-architecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contract architecture</h2>
+<p><img src="https://i.imgur.com/pxra0Gn.jpg" alt="Contract architecture"></p>
+<h2><a class="anchor" aria-hidden="true" id="protocore-contract-flow"></a><a href="#protocore-contract-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Protocore contract flow</h2>
+<p>tracking an initial stub here:
+<a href="https://github.com/benjaminbollen/mosaic-1/blob/protocore/contracts/protocorev2/ProtoCorev2.sol">https://github.com/benjaminbollen/mosaic-1/blob/protocore/contracts/protocorev2/ProtoCorev2.sol</a></p>
+<h2><a class="anchor" aria-hidden="true" id="dual-description-between-checkpoints-and-links"></a><a href="#dual-description-between-checkpoints-and-links" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dual description between checkpoints and links</h2>
+<p>The objective of <code>Protocore</code> is to finalise a unique history of proposed blocks.</p>
+<p>First we coarse-grain the history into a history of checkpoint blocks,
+where for the consensus we only allow votes on blocks at
+a block number which is an integer multiple of a <code>constant epochLength</code>.</p>
+<p>However, if we implement a consensus logic with blocks or checkpoint blocks as fundamental objects, then the code will become complex.
+We can delegate responsibility of ancestry checks to the layer-1 code to verify an unbroken chain of headers.</p>
+<p>We can further construct a dual picture of <code>Link</code>s.</p>
+<p>We do this in two steps. We define a <code>VoteMessage</code> as the known object</p>
+<pre><code class="hljs css language-js">&lt;H(T(s)), s, t, h_s, h_t&gt;
+</code></pre>
+<p>which is hashed to produce a <code>VoteMessageHash</code>; and a vote message where <code>h_t - h_s = epochLength</code>, can be proposed as a <code>Metablock</code> in <code>Core</code>.</p>
+<p>Define now a <code>Link</code> as the object</p>
+<pre><code class="hljs css language-js">struct Link {
+    bytes32 parentVoteMessageHash;
+    bytes32 targetBlockHash;
+    uint256 targetBlockNumber;
+    bytes32 sourceTransitionHash;
+    uint256 proposedMetablockHeight;
+    uint256 forwardVoteCount;
+    uint256 forwardVoteCountNextHeight;
+    uint256 forwardVoteCountPreviousHeight;
+    CheckpointFinalisationStatus targetFinalisation;
+}
+</code></pre>
+<pre><code class="hljs css language-js">enum CheckpointFinalisationStatus {
+    Undefined,
+    Registered,
+    Justified,
+    Finalised
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="user-stories"></a><a href="#user-stories" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User Stories</h2>
+<ul>
+<li>As a coconsensus contract I should be able to call <code>setup</code> function.</li>
+<li>As a user I should be able to propose a valid link.</li>
+<li>As an active validator I should be able to vote for the registered link.</li>
+<li>As a coconsensus contract I should be able to open a new metablock.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="origin-protocore"></a><a href="#origin-protocore" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Origin Protocore</h2>
+<p><code>OriginProtocore</code> Casper FFG game differs from <code>SelfProtocore</code> one with absence
+of the <strong>inclusion principle</strong>. There is no kernel and transition object for origin observations, so the VoteMessage should be simplified.</p>
+<p>Metablock height of the <code>OriginProtocore</code> is the metablock height of the <code>SelfProtocore</code>. This determines the active validators that can justify and finalise the links (and associated checkpoints).</p>
+<p>OriginProtocore reads validator set from SelfProtocore.</p>
+<h2><a class="anchor" aria-hidden="true" id="proposed-interfaces"></a><a href="#proposed-interfaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposed interfaces</h2>
+<p><code>Protocore</code> knows about <code>Link</code>s and <code>Validator</code>s who can vote on these links.
+Links become supermajority links under certain conditions specified later.</p>
+<pre><code class="hljs css language-js">contract Protocore is MosaicVersion, ValidatorSet
+{
+    mapping(bytes32 <span class="hljs-comment">/* vote message hash */</span> =&gt; Link) public links;
+
+    <span class="hljs-comment">/**
+     * @notice openMetablock() function marks the specified metablock
+     *         as opened.
+     *
+     * \pre `_metablockHeight` is plus one of the current metablock height of
+     *      the protocore.
+     * \pre `_kernelHash` is not 0.
+     *
+     * \post Increments open metablock height.
+     * \post Updates stored kernel hash.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">openMetablock</span>(<span class="hljs-params">
+        uint256 _metablockHeight,
+        bytes32 _kernelHash
+    </span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>_proposeLink() function proposes a valid link to be voted later
+     *          by active validators.
+     *
+     * \pre `parentVoteMessageHash` is not 0.
+     * \pre `parentVoteMessageHash` refers to an already proposed link which
+     *      `targetFinalisation` is at least justified.
+     * \pre `targetBlockHash` is not 0
+     * \pre `targetBlockNumber` is a multiple of the epoch length.
+     * \pre `targetBlockNumber` is bigger than a targetBlockNumber pointed
+     *      by `_parentVoteMessageHash` link.
+     * \pre A vote message hash (calculated with input params) does not exist.
+     *
+     * \post The link is saved in `links` mapping with currently
+     *       open metablock height as `proposedMetablockHeight`.
+     * \post `targetFinalisation` is set to 'Undefined'.
+     * \post forwardVoteCount -s set to 0.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_proposeLink</span>(<span class="hljs-params">
+        bytes32 _parentVoteMessageHash,
+        bytes32 _sourceTransitionHash,
+        bytes32 _targetBlockHash,
+        uint256 _targetBlockNumber
+    </span>)
+        <span class="hljs-title">internal</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>registerVote() function registers a vote for a link specified
+     *         by vote message hash.
+     *
+     * \pre `_voteMessageHash` is not 0.
+     * \pre A link mapping to the `_voteMessageHash` exists.
+     * \pre The metablock height of the link pointed by `_voteMessageHash` is
+     *      equal to the open metablock height or open metablock height minus 1.
+     * \pre Only an active validator can call.
+     *
+     * \post If quorum reached then for the link pointed by `_voteMessageHash`
+     *       targetFinalisation is set to justified. If the link length is
+     *       equal to the epoch length (finalisation link) then marks
+     *       targetFinalisation of the link pointed by `parentVoteMessageHash`
+     *       as finalised.
+     * \post Calls coconsensus if the source checkpoint of the link is finalised.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_registerVote</span>(<span class="hljs-params">
+        bytes32 _voteMessageHash,
+        bytes32 _r,
+        bytes32 _s,
+        uint8 _v
+    </span>)
+        <span class="hljs-title">internal</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>Takes vote message parameters and returns the typed vote
+     *         message hash.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hashVoteMessage</span>(<span class="hljs-params">
+        bytes32 _sourceTransitionHash,
+        bytes32 _sourceBlockHash,
+        bytes32 _targetBlockHash,
+        uint256 _sourceBlockNumber,
+        uint256 _targetBlockNumber
+    </span>)
+        <span class="hljs-title">private</span>
+        <span class="hljs-title">view</span>
+        <span class="hljs-title">returns</span> (<span class="hljs-params">bytes32 voteMessageHash_</span>)
+    </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+}
+
+contract OriginProtocore is MasterCopyUpgradable, GenesisOriginProtocore, Protocore
+{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>setup() function initializes the genesis link from values
+     *         defined in GenesisOriginProtocore.
+     *
+     * <span class="hljs-doctag">@dev </span>The following fields of the genesis link will be initialized with
+     *      constant placeholder values:
+     *          - `parentVoteMessageHash` will be set to GEN_PARENT_VOTE_MESSAGE_HASH
+     *          - `targetBlockHash` from GEN_TARGET_BLOCK_HASH
+     *          - `targetBlockNumber` from GEN_TARGET_BLOCK_NUMBER
+     *      `targetFinalisation` of the genesis link will be set to finalised.
+     *      `proposedMetablockHeight` will be set to 0.
+     *      `forwardVoteCount` -s will be set to 0.
+     *
+     * \pre The function can be called only by coconsensus contract.
+     * \pre The function can be called only once.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>proposeLink() function proposes a valid link to be voted later by
+     *          active validators.
+     *
+     * <span class="hljs-doctag">@dev </span>Satisfies \pre and \post conditions of Protocore::_proposeLink().
+     *
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">proposeLink</span>(<span class="hljs-params">
+        bytes32 _parentVoteMessageHash,
+        bytes32 _targetBlockHash,
+        uint256 _targetBlockNumber
+    </span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+
+        _proposeLink(
+            _parentVoteMessageHash,
+            bytes32(<span class="hljs-number">0</span>),
+            _targetBlockHash,
+            _targetBlockNumber
+        );
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>registerVote() function registers a vote for a link specified
+     *         by vote message hash.
+     *
+     * <span class="hljs-doctag">@dev </span>Satisfies \pre and \post conditions of Protocore::_registerVote().
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerVote</span>(<span class="hljs-params">
+        bytes32 _voteMessageHash,
+        bytes32 _r,
+        bytes32 _s,
+        uint8 _v
+    </span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        _registerVote(
+            _voteMessageHash,
+            _r,
+            _s,
+            _v
+        );
+    }
+}
+
+contract SelfProtocore is MasterCopyUpgradable, GenesisSelfProtocore, Protocore
+{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>setup() function initializes the genesis link from values
+     *         defined in GenesisSelfProtocore.
+     *
+     * <span class="hljs-doctag">@dev </span>The following fields of the genesis link will be initialized with
+     *      constant placeholder values:
+     *          - `sourceTransitionHash` will be set to GEN_SOURCE_TRANSITION_HASH
+     *          - `parentVoteMessageHash` will be set to GEN_PARENT_VOTE_MESSAGE_HASH
+     *          - `targetBlockHash` from GEN_TARGET_BLOCK_HASH
+     *          - `targetBlockNumber` from GEN_TARGET_BLOCK_NUMBER
+     *      `targetFinalisation` of the genesis link will be set to finalised.
+     *      `proposedMetablockHeight` will be set to 0.
+     *      `forwardVoteCount` -s will be set to 0.
+     *
+     * \pre The function can be called only by coconsensus contract.
+     * \pre The function can be called only once.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>proposeLink() function proposes a valid link to be voted later by
+     *          active validators.
+     *
+     * <span class="hljs-doctag">@dev </span>Satisfies \pre and \post conditions of Protocore::_proposeLink().
+     *
+     * \pre If the proposed link length in blocks is equal to one epoch length
+     *      (finalisation link) current block number is strictly less than
+     *      target block number + epoch length (inclusion principle).
+     * \pre `_sourceKernelHash` should match with the open kernel hash.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">proposeLink</span>(<span class="hljs-params">
+        bytes32 _parentVoteMessageHash,
+        bytes32 _targetBlockHash,
+        uint256 _targetBlockNumber,
+        bytes32 _sourceOriginObservation,
+        bytes32 _sourceKernelHash,
+        uint256 _sourceDynasty,
+        uint256 _sourceAccumulatedGas,
+        bytes32 _sourceCommitteeLock
+    </span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+
+        <span class="hljs-comment">// checks inclusion principle</span>
+
+        <span class="hljs-comment">// calculates source transition hash</span>
+
+        _proposeLink(
+            _parentVoteMessageHash,
+            sourceTransitionHash,
+            _targetBlockHash,
+            _targetBlockNumber
+        );
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@notice </span>registerVote() function registers a vote for a link specified
+     *         by vote message hash.
+     *
+     * <span class="hljs-doctag">@dev </span>Satisfies \pre and \post conditions of Protocore::_registerVote().
+     *
+     * \pre If a link (specified by `_voteMessageHash`) length is equal to one
+     *      epoch length (finalisation link) the inclusion principle should
+     *      be satisfied:
+     *          current block number is strictly less than
+     *          target block height + epoch length
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerVote</span>(<span class="hljs-params">
+        bytes32 _voteMessageHash,
+        bytes32 _r,
+        bytes32 _s,
+        uint8 _v
+    </span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        <span class="hljs-comment">// ...</span>
+
+        <span class="hljs-comment">// checks inclusion principle</span>
+
+        _registerVote(
+            _voteMessageHash,
+            _r,
+            _s,
+            _v
+        );
+    }
+}
+
+</code></pre>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="meeting-2"></a><a href="#meeting-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting 2</h2>
+<p>attendees: A G J D S P B
+date 9/1/2020</p>
+<p>Pro: base protocore for ProtocoreSelf and OriginObserver</p>
+<p>Abhay:</p>
+<ul>
+<li>Does ProtoCore has state machine logic like Core state machine(Core status) on origin chain?</li>
+</ul>
+<p>Sarvesh:- genesis link:
+1. There will be setup function which will initialize geneisis link. Some of the fields will be dummy values like (forward count and rear count will be zero.)</p>
+<p>Task: Specification for defining metachain id, we need to define it for origin chain too.</p>
+<p>Ben: Should the protocore (self) and origin protocore (origin observer) should inherit the validator set? or it can just reference to the coreputation contract to get the core validators ?</p>
+<p>Deepesh: Will the protocores for other auxiliary chain will have the same validators sets that are for self protocore ?</p>
+<h2><a class="anchor" aria-hidden="true" id="meeting-3"></a><a href="#meeting-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>meeting 3</h2>
+<p>date: 13/1/2020</p>
+<p>note taker: deepesh</p>
+<ul>
+<li>Pro runs over user stories, Ben scrolls the page</li>
+<li>Ben explained about forward and rear validator concept  on white board (check the video)</li>
+<li>Deepesh: Proposing a link and votion on the link should be different? or the proposal should also increase the vote count?
+<ul>
+<li>It will be different, anyone can propose, the validators will vote.</li>
+</ul></li>
+<li>Deepesh: Is validatorSet a contract? Yes, its will be contract and core and protocore will inherit it.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#contract-architecture">Contract architecture</a></li><li><a href="#protocore-contract-flow">Protocore contract flow</a></li><li><a href="#dual-description-between-checkpoints-and-links">Dual description between checkpoints and links</a></li><li><a href="#user-stories">User Stories</a></li><li><a href="#origin-protocore">Origin Protocore</a></li><li><a href="#proposed-interfaces">Proposed interfaces</a></li><li><a href="#meeting-2">Meeting 2</a></li><li><a href="#meeting-3">meeting 3</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/mosaicdaoWeb/" class="nav-home"><img src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO" width="66" height="58"/></a><div><h5>Docs</h5><a href="/mosaicdaoWeb/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc2.html">Guides (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/mosaicdaoWeb/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/mosaicdaoWeb/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/mosaicdaoWeb/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Your Name or Your Company Name</section></footer></div></body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Genesis file generation · MosaicDAO</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Genesis file generation"/><meta name="docsearch:version" content="1.0.1"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Genesis file generation · MosaicDAO"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jayeshbairagi.github.io/mosaicdaoWeb/"/><meta property="og:description" content="# Genesis file generation"/><meta property="og:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/mosaicdaoWeb/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/atom.xml" title="MosaicDAO Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/feed.xml" title="MosaicDAO Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/mosaicdaoWeb/js/scrollSpy.js"></script><link rel="stylesheet" href="/mosaicdaoWeb/css/main.css"/><script src="/mosaicdaoWeb/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/mosaicdaoWeb/"><img class="logo" src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO"/><h2 class="headerTitleWithLogo">MosaicDAO</h2></a><a href="/mosaicdaoWeb/versions"><h3>1.0.1</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/mosaicdaoWeb/docs/1.0.1/mosaic-pm/experience/hadapsar-testnet-developer-experience" target="_self">Docs</a></li><li class=""><a href="/mosaicdaoWeb/help" target="_self">Help</a></li><li class=""><a href="/mosaicdaoWeb/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Genesis file generation</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="genesis-file-generation"></a><a href="#genesis-file-generation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Genesis file generation</h1>
+<table>
+<thead>
+<tr><th>version</th><th>Last updated</th><th>Component</th></tr>
+</thead>
+<tbody>
+<tr><td>0.14</td><td>08/01/2020</td><td>Genesis file generation</td></tr>
+</tbody>
+</table>
+<p><strong>Meeting date/time:</strong> N/A</p>
+<p><strong>Editor:</strong> Deepesh Kumar Nath</p>
+<p><strong>Team:</strong> N/A</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<p>This will be an executable that will read the data from the core contract and generate the genesis file.</p>
+<p>Tech governance can create a new metachain. This can be done by calling the <code>newMetachain</code> function on the <code>Axiom</code> contract on the origin chain. During this process, the contracts for the metachains i.e <code>Core</code>, <code>ConsensusGateway</code>, <code>Anchor</code> comes to existence on the origin chain but the auxiliary chain does not exist yet.</p>
+<p>The auxiliary chain runs on clique to produce blocks for the network, so it critical to connect the peer validator nodes so that they can become the block producers and sign blocks on the same chain history, rather than producing blocks on independent forks.</p>
+<p>To form this network following things are required</p>
+<ul>
+<li>A genesis file</li>
+<li>Boot nodes to discover the peers</li>
+<li>Initial sealer addresses in POA network.</li>
+</ul>
+<p>In addition to this, the initial validators/sealers will need balance (gas) (utMOST) on the auxiliary chain to perform any transaction.</p>
+<p>The validators can join the newly created core (<code>joinBeforeOpen</code>). Before joining the core, the validators must deposit <code>OST/MOST</code> on consensus gateway so that they can receive equivalent amount of <code>utMOST</code> on auxiliary chain.
+When the minimum number of validators are joined then the block number (<code>rootOriginObservationBlockHeight</code>) is stored in the <code>Core</code> contract.</p>
+<p>Now the genesis file can be created by the executable by reading the data from the contracts. The following params are written in the genesis file</p>
+<ul>
+<li><code>config.chainId</code>
+This is the metachain id (core contract)</li>
+<li><code>timestamp</code>
+This is the timestamp of of the Origin block at height <code>rootOriginObservationBlockHeight</code> (stored in core contract)</li>
+<li><code>extraData</code>
+This will contain the address of all the validators that joined during the core.</li>
+<li><code>alloc</code>
+This section of genesis file will contain the following
+<ul>
+<li>precompiled contracts</li>
+<li>validators address with initial balance, the balance will be equal to the staked amount of OST/MOST.</li>
+</ul></li>
+</ul>
+<p>The address <code>0x00..000000</code> is reserved for the <code>utMOST</code> contract.
+The addresses from <code>0x00..004d00</code> to <code>0x00..004dff</code> are reserved for the precompiled mosaic contracts.</p>
+<p>The precompiled contracts will be allocated at the following addresses</p>
+<blockquote>
+<p>(Note: let's use this document as a reference and not copy information <a href="https://github.com/mosaicdao/mosaic-pm/blob/master/specification-discussions/20191209-genesis-contracts.md#mosaic-contract-layout">https://github.com/mosaicdao/mosaic-pm/blob/master/specification-discussions/20191209-genesis-contracts.md#mosaic-contract-layout</a>)</p>
+</blockquote>
+<pre><code class="hljs css language-text">0x00..000000 utMOST [proxy]
+
+0x00..004d00 CoConsensus [proxy]
+0x00..004d01 CoReputation [proxy]
+0x00..004d02 ConsensusCogateway [proxy]
+0x00..004d03 ProtocoreSelf [proxy]
+0x00..004d04 OriginObserver [proxy]
+0x00..004d05 OriginAnchor [proxy]
+...
+0x00..004dfa OriginAnchor [mastercopy]
+0x00..004dfb OriginObserver [mastercopy]
+0x00..004dfc ProtocoreSelf [mastercopy]
+0x00..004dfd ConsensusCogateway [mastercopy]
+0x00..004dfe CoReputation [mastercopy]
+0x00..004dff CoConsensus [mastercopy]
+</code></pre>
+<p>The storage of each contract will have some initial storage data. These initial data for the precompiled contracts will be written in the genesis file.</p>
+<pre><code class="hljs css language-text">< Storage of each contract to be updated >
+</code></pre>
+<p>Once the genesis file is created, the validators can use it to start the chain.
+The validators will publish the endpoint of bootnodes in the <code>Consensus</code> contract, so that other nodes can discover them as peers.</p>
+<p>The template for genesis file is given below:</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"number"</span>: <span class="hljs-string">"0x0"</span>,
+  <span class="hljs-attr">"config"</span>: {
+    <span class="hljs-attr">"chainId"</span>: &lt; metachainid &gt;,
+    <span class="hljs-attr">"homesteadBlock"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"eip150Block"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"eip150Hash"</span>: <span class="hljs-string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>,
+    <span class="hljs-attr">"eip155Block"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"eip158Block"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"byzantiumBlock"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"constantinopleBlock"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"petersburgBlock"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"istanbulBlock"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"clique"</span>: {
+      <span class="hljs-attr">"period"</span>: <span class="hljs-number">3</span>,
+      <span class="hljs-attr">"epoch"</span>: <span class="hljs-number">30000</span>
+    }
+  },
+  <span class="hljs-attr">"nonce"</span>: <span class="hljs-string">"0x0"</span>,
+  <span class="hljs-attr">"timestamp"</span>: <span class="hljs-string">"&lt; time stamp from block header of rootOriginObservationBlockHeight&gt;"</span>,
+  <span class="hljs-attr">"extraData"</span>: <span class="hljs-string">"0x0000000000000000000000000000000000000000000000000000000000000000&lt; all validator addresses &gt;0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"</span>,
+  <span class="hljs-attr">"gasLimit"</span>: <span class="hljs-string">"0x989680"</span>,
+  <span class="hljs-attr">"difficulty"</span>: <span class="hljs-string">"0x1"</span>,
+  <span class="hljs-attr">"mixHash"</span>: <span class="hljs-string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>,
+  <span class="hljs-attr">"coinbase"</span>: <span class="hljs-string">"0x0000000000000000000000000000000000000000"</span>,
+  <span class="hljs-attr">"alloc"</span>: {
+    <span class="hljs-attr">"0000000000000000000000000000000000000000"</span>: {
+      <span class="hljs-attr">"balance"</span>: <span class="hljs-string">"&lt; MOSAIC_CORE_MAX_BASECOIN_DEPOSIT &gt;"</span>,
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"0xcode_of_utMOST"</span>,
+      <span class="hljs-attr">"nonce"</span>: <span class="hljs-string">"1"</span>,
+      <span class="hljs-attr">"storage"</span>: {
+        <span class="hljs-attr">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>:<span class="hljs-string">" &lt; some value&gt;"</span>,
+        <span class="hljs-attr">"0x0000000000000000000000000000000000000000000000000000000000000001"</span>:<span class="hljs-string">" &lt; some value &gt;"</span>
+      }
+    },
+    <span class="hljs-attr">"&lt; validator addresses 1 &gt;"</span>: {
+      <span class="hljs-attr">"balance"</span>: <span class="hljs-string">"&lt; Staked amount &gt;"</span>
+    },
+    <span class="hljs-attr">"&lt; validator addresses 2 &gt;"</span>: {
+      <span class="hljs-attr">"balance"</span>: <span class="hljs-string">"&lt; Staked amount &gt;"</span>
+    },
+    <span class="hljs-attr">"0000000000000000000000000000000000000000000000000000000000004D&lt;00-ff&gt;"</span>: {
+      <span class="hljs-attr">"balance"</span>: <span class="hljs-string">"0"</span>,
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"&lt; contract code &gt;"</span>
+      <span class="hljs-string">"nonce"</span>: <span class="hljs-string">"1"</span>,
+      <span class="hljs-attr">"storage"</span>: {
+        <span class="hljs-attr">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>:<span class="hljs-string">" &lt; some value&gt;"</span>,
+        <span class="hljs-attr">"0x0000000000000000000000000000000000000000000000000000000000000001"</span>:<span class="hljs-string">" &lt; some value &gt;"</span>
+    }
+  },
+  <span class="hljs-attr">"gasUsed"</span>: <span class="hljs-string">"0x0"</span>,
+  <span class="hljs-attr">"parentHash"</span>: <span class="hljs-string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>
+}
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="user-stories"></a><a href="#user-stories" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User stories</h2>
+<ul>
+<li>As a validator(user) I expect
+<ul>
+<li>I should be notified when the data for the genesis file creation is made available</li>
+<li>The executable should already have and be able to query the following in the local database
+<ul>
+<li>The metachain id using the core contract</li>
+<li>The timestamp of the origin block using <code>rootOriginObservationBlockHeight</code></li>
+<li>The addresses of all other validators joining during the core creation</li>
+<li>All the precompiled contracts</li>
+<li>The initial balances or the staked amount(OST/MOST) of all the validators</li>
+</ul></li>
+<li>The executable to generate the genesis once the minimum number of validators join the core contract.</li>
+<li>The executable should have a template of genesis file that will be created with place holder that will be updated by the genesis file generation service.
+<ul>
+<li>The storage of each contract in the <code>alloc</code> section will have some initial storage data. These initial data for the precompiled contracts will be written in the genesis file.</li>
+</ul></li>
+<li>The executable should utilize the above values and generate the genesis file such that
+<ul>
+<li>The metachain id will be assigned to the <code>config.chainId</code></li>
+<li>The timestamp will be assigned</li>
+<li>The addresses of all the other validators to be stored in the <code>extraData</code> section</li>
+<li>The precompiled contracts should be stored in the <code>alloc</code> section</li>
+<li>The address of all the validators and their balances will be stored in the <code>alloc</code> section</li>
+<li>The address<code>0x00..000000</code> will be reserved for the <code>utMOST</code> contract</li>
+<li>The addresses from <code>0x00..004d00</code> to <code>0x00..004dff</code> are reserved for the precompiled mosaic contracts</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="assumptions"></a><a href="#assumptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Assumptions</h2>
+<ul>
+<li>The validator executable exists and is connected to rpc/ws endpoint</li>
+<li>The validator executable has already joined the core (<code>joinBeforeOpen</code>)</li>
+<li>The validator executable knows the consensus contract address.</li>
+<li>The validator executable knows the core contract address.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="out-of-scope"></a><a href="#out-of-scope" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Out of scope</h2>
+<h2><a class="anchor" aria-hidden="true" id="open-questions"></a><a href="#open-questions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Open questions</h2>
+<ol>
+<li>Verify address 0x0 is not used by ethereum</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="approach"></a><a href="#approach" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Approach</h2>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="meeting-notes"></a><a href="#meeting-notes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting notes</h2>
+<h3><a class="anchor" aria-hidden="true" id="meeting-1"></a><a href="#meeting-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meeting 1</h3>
+<p>date/time: 9/1/2020
+attendees: A G J D S P B</p>
+<p>Ben: private key of validator with which it called <code>consensus:joinBeforeOpening</code> is shared with the keystore file the geth process needs to start as a &quot;block producer&quot;/&quot;POA sealer&quot;. For Gen1-BFT</p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a></li><li><a href="#user-stories">User stories</a></li><li><a href="#assumptions">Assumptions</a></li><li><a href="#out-of-scope">Out of scope</a></li><li><a href="#open-questions">Open questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#meeting-notes">Meeting notes</a><ul class="toc-headings"><li><a href="#meeting-1">Meeting 1</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/mosaicdaoWeb/" class="nav-home"><img src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO" width="66" height="58"/></a><div><h5>Docs</h5><a href="/mosaicdaoWeb/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc2.html">Guides (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/mosaicdaoWeb/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/mosaicdaoWeb/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/mosaicdaoWeb/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Your Name or Your Company Name</section></footer></div></body></html>

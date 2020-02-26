@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>M1 Facilitator Task Breakdown (sprint 2) · MosaicDAO</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# M1 Facilitator Task Breakdown  (sprint 2)"/><meta name="docsearch:version" content="1.0.1"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="M1 Facilitator Task Breakdown (sprint 2) · MosaicDAO"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jayeshbairagi.github.io/mosaicdaoWeb/"/><meta property="og:description" content="# M1 Facilitator Task Breakdown  (sprint 2)"/><meta property="og:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jayeshbairagi.github.io/mosaicdaoWeb/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/mosaicdaoWeb/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/atom.xml" title="MosaicDAO Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog/feed.xml" title="MosaicDAO Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/mosaicdaoWeb/js/scrollSpy.js"></script><link rel="stylesheet" href="/mosaicdaoWeb/css/main.css"/><script src="/mosaicdaoWeb/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/mosaicdaoWeb/"><img class="logo" src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO"/><h2 class="headerTitleWithLogo">MosaicDAO</h2></a><a href="/mosaicdaoWeb/versions"><h3>1.0.1</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/mosaicdaoWeb/docs/1.0.1/mosaic-pm/experience/hadapsar-testnet-developer-experience" target="_self">Docs</a></li><li class=""><a href="/mosaicdaoWeb/help" target="_self">Help</a></li><li class=""><a href="/mosaicdaoWeb/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">M1 Facilitator Task Breakdown (sprint 2)</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="m1-facilitator-task-breakdown--sprint-2"></a><a href="#m1-facilitator-task-breakdown--sprint-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>M1 Facilitator Task Breakdown  (sprint 2)</h1>
+<table>
+<thead>
+<tr><th>Version</th><th>Last Updated</th><th>Component</th></tr>
+</thead>
+<tbody>
+<tr><td>0.14</td><td>13/02/2020</td><td>Task Breakdown  (sprint 2)</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="utbase"></a><a href="#utbase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UtBase</h2>
+<ol>
+<li>Update Utmost-&gt;UtBase implementation (3)
+<ul>
+<li>Rename <code>Utmost</code> to <code>UtBase</code></li>
+<li>Remove <code>UtilityToken</code> dependencies from <code>UtBase</code>
+<ul>
+<li>The <code>mint</code> function of <code>UtBase</code> needs to perform 2 operations
+<ul>
+<li>Call internal <code>_mint</code> function of ERC20 token.</li>
+<li>Unwrap the token to get the base token.</li>
+</ul></li>
+<li>In the current implementation, the <code>mint</code> external function is defined in the <code>UtilityToken</code>.</li>
+<li>In order to unwrap the token, the <code>mint</code> function needs to be overridden, resulting in to bypass the calls to Utility token.</li>
+<li><code>ERC20Token</code> already has <code>_mint</code>, <code>_burn</code> and <code>_burnFrom</code> internal functions. Currently the <code>UtBase is UtilityToken</code>, remove the dependencies of UtilityToken and directly use the functions from ERC20 token.</li>
+<li>The mint function in the UtBase can only be called by <code>ConsensusCogateway</code> address.</li>
+<li>The <code>mint external</code> function should not emit <code>Transfer</code> event as its already handled in the <code>_mint internal</code> function of ERC20Token..</li>
+<li>The <code>mint</code>, <code>burn</code> and <code>burnFrom</code> functions must not return <code>boolean</code> value.</li>
+</ul></li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="utility-token"></a><a href="#utility-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Utility token</h2>
+<ol>
+<li>Update Utility token contract (2)
+<ul>
+<li>Make it master copy non upgradable</li>
+<li>update setup function</li>
+</ul>
+<pre><code class="hljs">function setup(
+    string calldata _symbol,
+    string calldata _name,
+    uint8 _decimals,
+    uint256 _totalTokenSupply,
+   <span class="hljs-built_in"> address </span>_erc20Cogateway,
+   <span class="hljs-built_in"> address </span>_valueToken
+)
+    external
+</code></pre></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="update-erc20gatewaybase-consensusgateway-and-consensuscogateway-2"></a><a href="#update-erc20gatewaybase-consensusgateway-and-consensuscogateway-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Update ERC20GatewayBase, ConsensusGateway and ConsensusCogateway. (2)</h3>
+<ul>
+<li>ERC20GatewayBase:
+<ul>
+<li>Update <code>DEPOSIT_INTENT_TYPEHASH</code> and <code>hashDepositIntent()</code> to include <code>address valueToken</code>.</li>
+<li>Update <code>WITHDRAW_INTENT_TYPEHASH</code> and <code>hashWithdrawIntent()</code> to include <code>address valueToken,address utilityToken</code>.</li>
+</ul></li>
+<li>ConsensusGateway:
+<ul>
+<li>Update <code>deposit</code> function to pass most token in <code>hashDepositIntent()</code>.</li>
+<li>Update <code>confirmWithdraw</code> function to pass most and utbase token address in <code>hashWithdrawIntent()</code>.</li>
+</ul></li>
+<li>ConsensusCogateway:
+<ul>
+<li>Update <code>withdraw</code> function to pass most and utbase token address in <code>hashWithdrawIntent()</code>.</li>
+<li>Update <code>confirmDeposit</code> function to pass most address in <code>hashDepositIntent()</code>.</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="star-gateway"></a><a href="#star-gateway" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Star Gateway</h2>
+<p><strong>HackMD document:</strong> <a href="https://hackmd.io/vs6eBAk7QAK_4gQZbusqag">Star Gateway HackMD Document</a></p>
+<ol>
+<li>ERC20Gateway::setup (2)
+<ul>
+<li>Implement the <code>setup</code> function
+<pre><code class="hljs">function setup(
+    bytes32 _metachainId,
+   <span class="hljs-built_in"> address </span>_erc20Cogateway,
+   <span class="hljs-built_in"> address </span>_stateRootProvider,
+    uint256 _maxStorageRootItems,
+    uint8 _outboxStorageIndex
+)
+</code></pre>
+<ul>
+<li>call <code>setupMessageOutbox</code></li>
+<li>call <code>setupMessageInbox</code></li>
+</ul></li>
+</ul></li>
+<li>Implement GenesisERC20Cogateway (1)
+<ul>
+<li>This will include the following storage variables
+<ul>
+<li>genesisMetachainId</li>
+<li>genesisERC20Gateway</li>
+<li>genesisStateRootProvider</li>
+<li>genesisMaxStorageRootItems</li>
+<li>genesisOutboxStoreageIndex</li>
+</ul></li>
+</ul></li>
+<li>ERC20Cogateway::setup (2)
+<ul>
+<li>Implement the <code>setup</code> function
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>
+</code></pre>
+<ul>
+<li>call <code>setupMessageOutbox</code>, using genesis storage variables</li>
+<li>call <code>setupMessageInbox</code>, using genesis storage variables</li>
+<li>Add a modifier isActive.</li>
+</ul></li>
+</ul></li>
+<li>ERC20Gateway::deposit (2)</li>
+<li>ERC20Cogateway::withdraw (2)</li>
+<li>ERC20Cogateway::confirmDeposit (2)</li>
+<li>ERC20Gateway::confirmWithdraw (2)</li>
+<li>ERC20GatewayBase::proveGateway (2)</li>
+<li>Implement integration test for deposit flow (3)</li>
+<li>Implement integration test for withdraw flow (3)</li>
+<li>Generate interacts and prepare publish npm (2)</li>
+<li>Implement M0ERC20Cogateway (2)
+<ul>
+<li><code>M0ERC20Cogateway is ERC20Cogateway</code></li>
+<li>Override setup function. Do nothing.</li>
+<li>Implement activate function
+<pre><code class="hljs">function activate(
+    bytes32 _metachainId,
+   <span class="hljs-built_in"> address </span>_erc20Gateway
+   <span class="hljs-built_in"> address </span>_stateRootProvider,
+    uint256 _maxStorageRootItems,
+    uint8 _outboxStorageIndex,        
+)
+</code></pre></li>
+<li>Store the parameters in the genesis storage variables.</li>
+<li>Call ERC20Cogateway.setup();</li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="subgraph-m1-facilitator"></a><a href="#subgraph-m1-facilitator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Subgraph M1 Facilitator</h2>
+<p><strong>HackMD document:</strong> <a href="https://hackmd.io/J5nwK6zySlm4204yIKnc1w">Subgraph Gen1 Facilitator HackMD Document</a></p>
+<ol>
+<li>Setup schema.graphql, mapping(handler), schema, subgraph.yml file for Anchor (2)</li>
+<li>Upsert schema.graphql, mapping(handler), schema, subgraph.yml file for ERC20Gateway (2)</li>
+<li>Upsert schema.graphql, mapping(handler), schema, subgraph.yml file for ERC20CoGateway (2)</li>
+<li>Add command to deploy subgraph for each chain.</li>
+</ol>
+<p><strong>Note</strong>: New Repo? + '4th point'</p>
+<h2><a class="anchor" aria-hidden="true" id="facilitator"></a><a href="#facilitator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Facilitator</h2>
+<p><strong>HackMD document:</strong> <a href="https://hackmd.io/L7imUcH7RMmOXB6-alyXgg">Facilitator specs</a></p>
+<h3><a class="anchor" aria-hidden="true" id="folder-restructure"></a><a href="#folder-restructure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Folder restructure</h3>
+<ol>
+<li>Restructure repository to support different personas (don't define modes, it s an unneeded abstraction, be explicit about which personas to run in manifest) (2)
+<ul>
+<li>Move everything for m0-facilitator
+<ul>
+<li>For <code>src</code>, <code>test</code> and <code>test_integration</code></li>
+<li>using <code>git mv</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="models--repositories"></a><a href="#models--repositories" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Models &amp; Repositories</h3>
+<ol>
+<li>Implement <code>DepositIntent</code> model and <code>DepositIntent repository</code>. (2)</li>
+<li>Implement <code>WithdrawIntent</code> model and <code>WithdrawIntent repository</code>. (2)</li>
+<li>Implement <code>Achor</code> model and <code>Anchor repository</code>. (2)</li>
+<li><del>Implement AnchoredStateRoots model and AnchoredStateRoots repository. (2)</del></li>
+<li>Implement <code>Gateway</code> model and <code>Gateway repository</code>. (2)</li>
+<li>Implement <code>Message</code> model and <code>Message repository</code>. (2)</li>
+<li>Implement <code>ContractEntity</code> model and <code>ContractEntity repository</code>. (2)</li>
+<li><del>Implement <code>Metachain</code> model and <code>Metachain repository</code> (to be estimated).</del></li>
+<li><del>Implement <code>TrustedEndpoint</code> and <code>TrustedEndpointRepository</code> (to be estimated).</del></li>
+<li>Implement <code>ERC20GatewayTokenPair</code> and <code>ERC20GatewayTokenPairRepositiry</code> (2) [Implementeer can suggest a better name]
+<pre><code class="hljs">- ERc20Gateway<span class="hljs-built_in"> address
+</span>- ValueToken<span class="hljs-built_in"> address
+</span>- UtilityToken<span class="hljs-built_in"> address </span>   
+</code></pre></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="manifest-file"></a><a href="#manifest-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Manifest file</h3>
+<ol>
+<li>Define facilitator manifest and manifest schema(FOR M1); validate the manifest file. (2)
+<ul>
+<li>Proposed facilitator manifest:</li>
+</ul>
+<pre><code class="hljs css language-yaml="><span class="hljs-symbol">version:</span> <span class="hljs-string">"v0.14"</span>
+<span class="hljs-symbol">architecture_layout:</span> M1
+<span class="hljs-symbol">personas:</span>        
+    facilitator
+    validator        
+<span class="hljs-symbol">chain:</span> <span class="hljs-comment">// section for m0 utility chains</span>
+<span class="hljs-symbol">metachain:</span> <span class="hljs-comment">// section metachains for m1</span>
+<span class="hljs-symbol">    auxiliary:</span>
+<span class="hljs-symbol">        avatar_account:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        node_endpoint:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        graph_ws_endpoint:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        graph_rpc_endpoint:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">    origin:</span>
+<span class="hljs-symbol">        avatar_account:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        node_endpoint:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        graph_ws_endpoint:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        graph_rpc_endpoint:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">accounts:</span>
+    <span class="hljs-string">"0xac7E36b3cdDb14Bf1c67dC21fFB24C73d03d8FF7"</span>:
+<span class="hljs-symbol">        keystore_path:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">        keystore_password_path:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">origin_contract_addresses:</span>
+<span class="hljs-symbol">    erc20_gateway:</span> <span class="hljs-string">""</span>
+<span class="hljs-symbol">facilitate_tokens:</span>
+    - <span class="hljs-number">0xA</span>
+    - <span class="hljs-number">0xB</span>
+</code></pre></li>
+</ol>
+<p><strong>Note</strong>: Testcases for validation of schema</p>
+<ol>
+<li>Implement a function to check if the DB is initialized with the proper seed data. (1)
+<ul>
+<li>Check if the tables in the DB has the the following data as per the manifest file
+<ul>
+<li><del>Metachain</del></li>
+<li>Gateway</li>
+<li><del>Anchor</del></li>
+<li><del>ContractEntity</del></li>
+</ul></li>
+</ul></li>
+<li>Implement facilitator init, support M1 faciltiator. (3)
+<ul>
+<li>Facilitator init. (if -f option is used then clear the DB)</li>
+<li>Check if the facilitator is already initialized, if yes display error.</li>
+<li>Create the DB (use gateway address in file path)</li>
+<li>Connect to origin rpc endpoint</li>
+<li>Get the <code>ERC20Cogateway</code> address from the provided <code>ERC20Gateway</code> address.</li>
+<li>Get the <code>Anchor</code> contract address from the provided <code>ERC20Gateway</code> address.</li>
+<li>Get the last proven block number form the origin achor contract.</li>
+<li>Connect to auxiliary rpc endpoint</li>
+<li>Get the <code>Anchor</code> contract address from the provided <code>ERC20Cogateway</code> address.</li>
+<li>Get the last proven block number form the auxiliary achor contract.</li>
+<li>Update the following seed data:
+<ul>
+<li><p><del>Metachain</del></p>
+<p><del>metachainId - &lt; auxiliary metachain id &gt;</del>
+<del>originMetachainId - &lt; origin metachain id &gt;</del>
+<del>anchorGA - &lt; auxiliary_anchor_address &gt;</del>
+<del>mosaic version - &lt; get from gateway contracts &gt;</del>
+<del>consensus address - null</del></p></li>
+</ul></li>
+</ul></li>
+</ol>
+<pre><code class="hljs">    - Gateway
+        ```
+        GatewayGA - erc20gateway address
+        RemoteGatewayGA - erc20Cogateway address
+        Gateway type - erc20
+        Destination global address - null.      
+        RemoteGatewayLastProvenBlockNumber - block number form the origin achor contract
+        AnchorGA - Origin anchor address.
+        ```
+        ```
+        GatewayGA - erc20Cogateway address
+        RemoteGatewayGA - erc20gateway address
+        Gateway type - erc20
+        Destination global address - null.      
+        RemoteGatewayLastProvenBlockNumber - block number form the auxiliary achor contract
+        AnchorGA - Auxiliary anchor address.
+        ``` 
+    - Anchor
+        ```
+        AnchorGA - origin anchor address.
+        blockHeight - anchored block height from origin anchor.
+
+        ``` 
+        ```
+        AnchorGA - auxiliary anchor address.
+        blockHeight - anchored block height from auxiliary anchor.
+
+        ``` 
+    - ContractEntity (already exists in the repo)
+</code></pre>
+<ol>
+<li><p>Implement facilitator start, support M1 faciltiator. (3)</p>
+<ul>
+<li>Check if the manifest.yaml is valid.</li>
+<li>Check if the seed data is populated as per the provided manifest file.</li>
+<li>Subscribe to origin graph</li>
+<li>Subscribe to auxlilairy graph</li>
+</ul></li>
+<li><p>Gracefully stop facilitator (M0 and M1) (2)</p>
+<ul>
+<li>Unsubscribe to the origin graph node, aux graph node</li>
+<li>Clear set interval for resubscription</li>
+</ul></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="entity-handlers"></a><a href="#entity-handlers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entity Handlers</h3>
+<ol>
+<li>Implement <code>DeclaredDepositIntent</code> handler (2)</li>
+<li>Implement <code>ConfirmedDepositIntent</code> handler (2)</li>
+<li>Implement <code>DeclaredWithdrawIntent</code> handler (2)</li>
+<li>Implement <code>ConfirmedWithdrawIntent</code> handler (2)</li>
+<li>Implement <code>StateRootAvailable</code> handler (2)</li>
+<li>Implement <code>GatewayProven</code> handler (2)</li>
+<li>Implement <code>CreatedUtilityToken</code> handler (2)</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="services"></a><a href="#services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Services</h3>
+<ol>
+<li>Implement ConfirmDeposit service (3)</li>
+<li>Implement ConfirmWithdraw service (3)</li>
+<li>Implement ProveGateway service (2)</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="m1-facilitator-integration-tests"></a><a href="#m1-facilitator-integration-tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>M1 Facilitator Integration Tests</h3>
+<ol>
+<li>Chain setup for integration testing (3)
+<ul>
+<li>Take inspiration from contract integration tests</li>
+</ul></li>
+<li>Implement integration test for deposit flow for ERC20token (5)</li>
+<li>Implement integration test for withdraw flow for ERC20token (3)</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="facilitator-other-tasks"></a><a href="#facilitator-other-tasks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Facilitator Other Tasks</h3>
+<ol>
+<li>Implement Transaction executor. (3)
+<ul>
+<li>Revisit the nonce logic in testcases</li>
+</ul></li>
+<li><del>Implement ERC20GatewayAvatar</del></li>
+<li>Readme update</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="implement-system-test-"></a><a href="#implement-system-test-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implement System Test ()</h3>
+<p>Reference: <a href="https://github.com/mosaicdao/facilitator/issues/206">https://github.com/mosaicdao/facilitator/issues/206</a></p>
+<h3><a class="anchor" aria-hidden="true" id="demo-scripts"></a><a href="#demo-scripts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo scripts</h3>
+<ol>
+<li>Implement script for creating depositer and withdrawer</li>
+<li>Implement script for deposit</li>
+<li>Implement script for withdraw</li>
+<li>Readme update</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="faucet"></a><a href="#faucet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Faucet</h2>
+<ul>
+<li>Configure faucet</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="blockscout-explorer"></a><a href="#blockscout-explorer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Blockscout explorer</h2>
+<ul>
+<li>Support explorer to provide a view for all the transactions for hadapsar Gen1 testnet.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="eth-stats"></a><a href="#eth-stats" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Eth stats</h2>
+<ul>
+<li>Eth stats support with new hadapsar Gen1 testnet.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="devops"></a><a href="#devops" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Devops</h2>
+<ul>
+<li>Deploy ERC20Gateway and ERC20Cogateway contracts</li>
+<li>Setup star gateway facilitator</li>
+</ul>
+<p>Total points 102
+Total devs
+- Abhay + 1  =&gt; 12      10     11
+- Sarvesh + 1 =&gt; 12     10
+- Gulshan + 1 =&gt; 12     10
+- Pro () =&gt; 10           8
+- Deepesh (0.5) =&gt; 6     5</p>
+<pre><code class="hljs">- Jayesh (0)
+- Ben (0)
+
+Total =&gt; 52 dev days     43 
+</code></pre>
+<p>Velocity =&gt; 2 (~1.96)        2.37</p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#utbase">UtBase</a></li><li><a href="#utility-token">Utility token</a><ul class="toc-headings"><li><a href="#update-erc20gatewaybase-consensusgateway-and-consensuscogateway-2">Update ERC20GatewayBase, ConsensusGateway and ConsensusCogateway. (2)</a></li></ul></li><li><a href="#star-gateway">Star Gateway</a></li><li><a href="#subgraph-m1-facilitator">Subgraph M1 Facilitator</a></li><li><a href="#facilitator">Facilitator</a><ul class="toc-headings"><li><a href="#folder-restructure">Folder restructure</a></li><li><a href="#models--repositories">Models &amp; Repositories</a></li><li><a href="#manifest-file">Manifest file</a></li><li><a href="#entity-handlers">Entity Handlers</a></li><li><a href="#services">Services</a></li><li><a href="#m1-facilitator-integration-tests">M1 Facilitator Integration Tests</a></li><li><a href="#facilitator-other-tasks">Facilitator Other Tasks</a></li><li><a href="#implement-system-test-">Implement System Test ()</a></li><li><a href="#demo-scripts">Demo scripts</a></li></ul></li><li><a href="#faucet">Faucet</a></li><li><a href="#blockscout-explorer">Blockscout explorer</a></li><li><a href="#eth-stats">Eth stats</a></li><li><a href="#devops">Devops</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/mosaicdaoWeb/" class="nav-home"><img src="/mosaicdaoWeb/img/favicon.ico" alt="MosaicDAO" width="66" height="58"/></a><div><h5>Docs</h5><a href="/mosaicdaoWeb/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc2.html">Guides (or other categories)</a><a href="/mosaicdaoWeb/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/mosaicdaoWeb/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/mosaicdaoWeb/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/mosaicdaoWeb/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Your Name or Your Company Name</section></footer></div></body></html>
