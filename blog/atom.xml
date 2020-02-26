@@ -6,8 +6,8 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jayeshbairagi.github.io/mosaicdaoWeb/blog"/>
     <subtitle>The best place to stay up-to-date with the latest MosaicDAO news and events.</subtitle>
-    <logo>https://jayeshbairagi.github.io/mosaicdaoWeb/img/favicon.ico</logo>
-    <rights>Copyright © 2020 Your Name or Your Company Name</rights>
+    <logo>https://jayeshbairagi.github.io/mosaicdaoWeb/img/mosaicLogo.ico</logo>
+    <rights>Copyright © 2020 Mosaic</rights>
     <entry>
         <title type="html"><![CDATA[New Version 1.0.0]]></title>
         <id>https://jayeshbairagi.github.io/mosaicdaoWeb/blog/2017/10/24/new-version-1.0.0.html</id>
