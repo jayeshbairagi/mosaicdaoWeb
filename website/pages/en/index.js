@@ -60,7 +60,7 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/undraw_monitor.svg`} />
+        {/* <Logo img_src={`${baseUrl}img/undraw_monitor.svg`} /> */}
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
@@ -90,14 +90,14 @@ class Index extends React.Component {
       </Container>
     );
 
-    const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
-      </div>
-    );
+    // const FeatureCallout = () => (
+    //   <div
+    //     className="productShowcaseSection paddingBottom"
+    //     style={{textAlign: 'center'}}>
+    //     <h2>Feature Callout</h2>
+    //     <MarkdownBlock>These are features of this project</MarkdownBlock>
+    //   </div>
+    // );
 
     const Description = () => (
       <Block background="dark">
@@ -113,33 +113,33 @@ class Index extends React.Component {
       </Block>
     );
 
-    const Features = () => (
-      <Block layout="fourColumn">
-        {[
-          {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/undraw_react.svg`,
-            imageAlign: 'top',
-            title: 'Feature One',
-          },
-          {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/undraw_operating_system.svg`,
-            imageAlign: 'top',
-            title: 'Feature Two',
-          },
-        ]}
-      </Block>
-    );
+    // const Features = () => (
+    //   <Block layout="fourColumn">
+    //     {[
+    //       {
+    //         content: 'This is the content of my feature',
+    //         image: `${baseUrl}img/undraw_react.svg`,
+    //         imageAlign: 'top',
+    //         title: 'Feature One',
+    //       },
+    //       {
+    //         content: 'The content of my second feature',
+    //         image: `${baseUrl}img/undraw_operating_system.svg`,
+    //         imageAlign: 'top',
+    //         title: 'Feature Two',
+    //       },
+    //     ]}
+    //   </Block>
+    // );
 
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
-        <div className="mainContainer">
+        {/* <div className="mainContainer">
           <Features />
           <FeatureCallout />
           <Description />
-        </div>
+        </div> */}
       </div>
     );
   }
