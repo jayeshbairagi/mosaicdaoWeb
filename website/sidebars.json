@@ -1,5 +1,15 @@
 {
   "docs": {
-    "Developer Experience": ["mosaic-pm/experience/hadapsar-testnet-developer-experience"]
+    "Developer Experience": ["mosaic-pm/experience/hadapsar-testnet-developer-experience"],
+    "Hadapsar Testnet": [
+      "mosaic-pm/experience/hadapsar-DX/home",
+      "mosaic-pm/experience/hadapsar-DX/faucet",
+      "mosaic-pm/experience/hadapsar-DX/connect",
+      "mosaic-pm/experience/hadapsar-DX/deposit",
+      "mosaic-pm/experience/hadapsar-DX/deploy",
+      "mosaic-pm/experience/hadapsar-DX/withdraw",
+      "mosaic-pm/experience/hadapsar-DX/explorer",
+      "mosaic-pm/experience/hadapsar-DX/metamask"
+    ]
   }
 }

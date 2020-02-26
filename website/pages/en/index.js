@@ -64,7 +64,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href={docUrl('mosaic-pm/experience/hadapsar-testnet-developer-experience.html')}>Developer experience</Button>
+            <Button href={docUrl('mosaic-pm/experience/hadapsar-DX/home')}>Developer experience</Button>
           </PromoSection>
         </div>
       </SplashContainer>
