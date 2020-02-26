@@ -27,7 +27,7 @@ function Help(props) {
       title: 'Browse Docs',
     },
     {
-      content: `Ask questions about the documentation and project. Join [mosaic discord](${docUrl(
+      content: `Ask questions about the documentation and project. Join mosaic on [discord](${docUrl(
         'https://discord.gg/NWkpKH'
       )})`,
       title: 'Join the community',
